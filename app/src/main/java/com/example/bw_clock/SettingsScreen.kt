@@ -119,6 +119,18 @@ fun SettingsScreen(
                 onRight = { coroutineScope.launch { repository.updateClockSizePercent(settings.clockSizePercent + 10) } }
             ),
             SettingsItem(
+                label = "時計 横位置",
+                valueText = "${settings.clockOffsetX}%",
+                onLeft = { coroutineScope.launch { repository.updateClockOffsetX(settings.clockOffsetX - 5) } },
+                onRight = { coroutineScope.launch { repository.updateClockOffsetX(settings.clockOffsetX + 5) } }
+            ),
+            SettingsItem(
+                label = "時計 縦位置",
+                valueText = "${settings.clockOffsetY}%",
+                onLeft = { coroutineScope.launch { repository.updateClockOffsetY(settings.clockOffsetY - 5) } },
+                onRight = { coroutineScope.launch { repository.updateClockOffsetY(settings.clockOffsetY + 5) } }
+            ),
+            SettingsItem(
                 label = "日付",
                 valueText = if (settings.showDate) "ON" else "OFF",
                 onLeft = { coroutineScope.launch { repository.updateShowDate(!settings.showDate) } },
@@ -143,6 +155,18 @@ fun SettingsScreen(
                 valueText = "${settings.dateSizePercent}%",
                 onLeft = { coroutineScope.launch { repository.updateDateSizePercent(settings.dateSizePercent - 10) } },
                 onRight = { coroutineScope.launch { repository.updateDateSizePercent(settings.dateSizePercent + 10) } }
+            ),
+            SettingsItem(
+                label = "日付 横位置",
+                valueText = "${settings.dateOffsetX}%",
+                onLeft = { coroutineScope.launch { repository.updateDateOffsetX(settings.dateOffsetX - 5) } },
+                onRight = { coroutineScope.launch { repository.updateDateOffsetX(settings.dateOffsetX + 5) } }
+            ),
+            SettingsItem(
+                label = "日付 縦位置",
+                valueText = "${settings.dateOffsetY}%",
+                onLeft = { coroutineScope.launch { repository.updateDateOffsetY(settings.dateOffsetY - 5) } },
+                onRight = { coroutineScope.launch { repository.updateDateOffsetY(settings.dateOffsetY + 5) } }
             ),
             SettingsItem(
                 label = "焼付防止",

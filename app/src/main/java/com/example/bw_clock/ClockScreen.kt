@@ -78,8 +78,10 @@ fun ClockScreen(settings: ClockSettings) {
         Canvas(modifier = Modifier.fillMaxSize()) {
             val shortSide = min(size.width, size.height)
             val radius = (shortSide / 2f) * clockSizeRatio * 0.9f
-            val centerX = size.width / 2f + burnInOffsetX
-            val centerY = size.height / 2f + burnInOffsetY
+            val clockPixelOffsetX = size.width * settings.clockOffsetX / 100f
+            val clockPixelOffsetY = size.height * settings.clockOffsetY / 100f
+            val centerX = size.width / 2f + burnInOffsetX + clockPixelOffsetX
+            val centerY = size.height / 2f + burnInOffsetY + clockPixelOffsetY
             val fg = clockColors.foreground
 
             // Frame (outer circle)
@@ -221,14 +223,19 @@ private fun DrawScope.drawDate(
     val textCenterOffset = -(textPaint.fontMetrics.ascent + textPaint.fontMetrics.descent) / 2f
 
     val marginWidth = (size.width - shortSide) / 2f
-    val x: Float
-    val y: Float = size.height / 2f + burnInOffsetY
+    val datePixelOffsetX = size.width * settings.dateOffsetX / 100f
+    val datePixelOffsetY = size.height * settings.dateOffsetY / 100f
+    val baseX: Float
+    val baseY: Float = size.height / 2f + burnInOffsetY
 
     if (settings.datePosition == DatePosition.LEFT) {
-        x = marginWidth / 2f + burnInOffsetX
+        baseX = marginWidth / 2f + burnInOffsetX
     } else {
-        x = size.width - marginWidth / 2f + burnInOffsetX
+        baseX = size.width - marginWidth / 2f + burnInOffsetX
     }
+
+    val x = baseX + datePixelOffsetX
+    val y = baseY + datePixelOffsetY
 
     drawContext.canvas.nativeCanvas.drawText(
         dateLine, x, y - lineHeight * 0.5f + textCenterOffset, textPaint
