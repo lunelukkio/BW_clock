@@ -5,15 +5,15 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -191,7 +191,7 @@ fun SettingsScreen(
 
     var selectedIndex by remember { mutableIntStateOf(0) }
     val focusRequester = remember { FocusRequester() }
-    val scrollState = rememberScrollState()
+    val listState = rememberLazyListState()
 
     Box(
         modifier = Modifier
@@ -231,23 +231,25 @@ fun SettingsScreen(
             },
         contentAlignment = if (isVertical) Alignment.BottomCenter else Alignment.CenterEnd
     ) {
-        Column(
+        LazyColumn(
+            state = listState,
             modifier = Modifier
                 .width(360.dp)
                 .heightIn(max = 500.dp)
                 .background(Color.DarkGray.copy(alpha = 0.9f))
-                .padding(16.dp)
-                .verticalScroll(scrollState),
+                .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            Text(
-                text = "設定",
-                color = Color.White,
-                fontSize = 20.sp,
-                modifier = Modifier.padding(bottom = 8.dp)
-            )
+            item {
+                Text(
+                    text = "設定",
+                    color = Color.White,
+                    fontSize = 20.sp,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+            }
 
-            items.forEachIndexed { index, item ->
+            itemsIndexed(items) { index, item ->
                 val isSelected = index == selectedIndex
                 Row(
                     modifier = Modifier
@@ -283,10 +285,8 @@ fun SettingsScreen(
         focusRequester.requestFocus()
     }
 
-    // Auto-scroll to keep selected item visible
     androidx.compose.runtime.LaunchedEffect(selectedIndex) {
-        val itemHeight = 40 // approximate item height in pixels
-        val targetScroll = (selectedIndex * itemHeight - 100).coerceAtLeast(0)
-        scrollState.animateScrollTo(targetScroll)
+        // +1 to skip the header item
+        listState.animateScrollToItem(selectedIndex + 1)
     }
 }
