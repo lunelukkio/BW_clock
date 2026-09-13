@@ -1,5 +1,12 @@
 # BW_clock
 
+<p align="center">
+  <img src="docs/images/app-dark.png" alt="Clock face, dark theme (screenshot from the phone version)" width="220">
+  <img src="docs/images/app-light.png" alt="Clock face, light theme (screenshot from the phone version)" width="220">
+  <img src="docs/images/widget.jpg" alt="Phone home-screen widget (not available in the TV version)" width="220">
+</p>
+<p align="center">Screenshots from the phone version. The TV version draws the same clock face in landscape. The third image is the phone's home-screen widget, which does not exist in the TV version.<br>スマホ版のスクリーンショットです。TV 版は同じ文字盤を横画面で表示します。3 枚目はスマホ版のホーム画面ウィジェットで、TV 版にはありません。</p>
+
 [English](#english) | [日本語](#日本語)
 
 ---
