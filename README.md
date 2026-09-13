@@ -5,7 +5,7 @@
   <img src="docs/images/app-light.png" alt="Clock face, light theme (screenshot from the phone version)" width="220">
   <img src="docs/images/widget.jpg" alt="Phone home-screen widget (not available in the TV version)" width="220">
 </p>
-<p align="center">Screenshots from the phone version. The TV version draws the same clock face in landscape. The third image is the phone's home-screen widget, which does not exist in the TV version.<br>スマホ版のスクリーンショットです。TV 版は同じ文字盤を横画面で表示します。3 枚目はスマホ版のホーム画面ウィジェットで、TV 版にはありません。</p>
+<p align="center">Screenshots from the phone version. The TV version draws the same clock face in landscape. The third image is the phone's home-screen widget, which does not exist in the TV version. In that image, the digital date, time and alarm in the middle are a separate widget from another app; BW_clock's widget is the analog clock face only.<br>スマホ版のスクリーンショットです。TV 版は同じ文字盤を横画面で表示します。3 枚目はスマホ版のホーム画面ウィジェットで、TV 版にはありません。その画像の中央にある日付・時刻・アラームのデジタル表示は別アプリのウィジェットで、BW_clock のウィジェットはアナログ文字盤の部分だけです。</p>
 
 [English](#english) | [日本語](#日本語)
 
